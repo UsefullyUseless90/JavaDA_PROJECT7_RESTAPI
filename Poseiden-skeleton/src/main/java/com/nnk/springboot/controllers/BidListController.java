@@ -64,7 +64,7 @@ public class BidListController {
     @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
-        if(result.hasErrors() || id != bidList.getBidListId()){
+        if(result.hasErrors()){
             logger.info("Bid seems wrong, please try again.");
             return "redirect:/bidList/add";
         }
