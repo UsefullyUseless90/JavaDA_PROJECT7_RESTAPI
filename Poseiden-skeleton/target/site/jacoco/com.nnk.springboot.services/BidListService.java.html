@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BidListService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-skeleton</a> &gt; <a href="index.source.html" class="el_package">com.nnk.springboot.services</a> &gt; <span class="el_source">BidListService.java</span></div><h1>BidListService.java</h1><pre class="source lang-java linenums">package com.nnk.springboot.services;
+
+import com.nnk.springboot.domain.dao.BidList;
+import com.nnk.springboot.domain.dto.BidListDTO;
+import com.nnk.springboot.repositories.BidListRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional
+<span class="fc" id="L15">@AllArgsConstructor</span>
+public class BidListService {
+
+    @Autowired
+    BidListRepository bRepo;
+
+    public List&lt;BidList&gt; getAll(){
+<span class="fc" id="L22">        List&lt;BidList&gt;bidLists = bRepo.findAll();</span>
+<span class="fc" id="L23">        return bidLists;</span>
+    }
+
+    public BidList findById(int id){
+<span class="fc" id="L27">        BidList bidList = bRepo.findById(id).orElse(null);</span>
+<span class="fc" id="L28">        return bidList;</span>
+    }
+    public BidList saveBid(BidList bidList){
+<span class="fc" id="L31">        bRepo.save(bidList);</span>
+<span class="fc" id="L32">    return bidList;</span>
+    }
+
+    public BidList update(BidListDTO bidList, int id){
+<span class="pc" id="L36">       BidList bList = bRepo.findById(id).orElseThrow(() -&gt; new IllegalArgumentException(&quot;Invalid bid with id :&quot; + bidList.getBListId()));</span>
+<span class="fc" id="L37">        bList.setBid(id);</span>
+<span class="fc" id="L38">        bList.setAccount(bidList.getAccount());</span>
+<span class="fc" id="L39">        bList.setType(bidList.getType());</span>
+<span class="fc" id="L40">        bList.setBidQuantity(bidList.getBidQuantity());</span>
+<span class="fc" id="L41">        bRepo.save(bList);</span>
+<span class="fc" id="L42">        return bList;</span>
+    }
+
+    public BidList delete(BidList bidList){
+<span class="nc" id="L46">        bRepo.findById(bidList.getBidListId());</span>
+<span class="nc" id="L47">        bRepo.delete(bidList);</span>
+<span class="nc" id="L48">        return bidList;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
