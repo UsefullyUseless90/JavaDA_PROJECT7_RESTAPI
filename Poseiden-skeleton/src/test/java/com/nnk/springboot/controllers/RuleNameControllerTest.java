@@ -191,7 +191,7 @@ public class RuleNameControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
         .andDo(print())
         .andExpect(status().isFound())
-        .andExpect(view().name("redirect:/ruleName/add"));
+        .andExpect(view().name("redirect:/ruleName/update/{id}"));
     }
 
     @Test

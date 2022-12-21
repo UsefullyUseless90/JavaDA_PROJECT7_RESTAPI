@@ -142,7 +142,7 @@ public class TradeControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
         .andDo(print())
         .andExpect(status().isFound())
-        .andExpect(view().name("redirect:/trade/add"));
+        .andExpect(view().name("redirect:/trade/update/{id}"));
     }
 
     @Test

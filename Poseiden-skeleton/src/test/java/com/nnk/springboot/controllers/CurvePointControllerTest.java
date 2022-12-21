@@ -141,7 +141,7 @@ public class CurvePointControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
         .andDo(print())
         .andExpect(status().isFound())
-        .andExpect(view().name("redirect:/curvePoint/add"));
+        .andExpect(view().name("redirect:/curvePoint/update/{id}"));
     }
 
     @Test

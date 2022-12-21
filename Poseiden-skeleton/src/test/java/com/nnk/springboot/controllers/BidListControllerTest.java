@@ -145,7 +145,7 @@ public class BidListControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isFound())
-        .andExpect(view().name("redirect:/bidList/add"));
+        .andExpect(view().name("redirect:/bidList/update/{id}"));
     }
 
     @Test

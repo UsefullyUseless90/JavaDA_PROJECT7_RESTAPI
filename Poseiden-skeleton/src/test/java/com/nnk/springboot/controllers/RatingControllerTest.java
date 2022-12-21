@@ -144,7 +144,7 @@ class RatingControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
         .andDo(print())
         .andExpect(status().isFound())
-        .andExpect(view().name("redirect:/rating/add"));
+        .andExpect(view().name("redirect:/rating/update/{id}"));
     }
 
     @Test
