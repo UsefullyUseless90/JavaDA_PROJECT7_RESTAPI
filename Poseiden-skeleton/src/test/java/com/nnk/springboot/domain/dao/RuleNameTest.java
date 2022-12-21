@@ -7,9 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 class RuleNameTest {
-    /**
-     * Method under test: {@link RuleName#RuleName()}
-     */
+
     @Test
     void testConstructor() {
         RuleName actualRuleName = new RuleName();
@@ -22,9 +20,6 @@ class RuleNameTest {
         assertEquals(0, actualRuleName.getId());
     }
 
-    /**
-     * Method under test: {@link RuleName#RuleName(String, String, String, String, String, String)}
-     */
     @Test
     void testConstructor2() {
         RuleName actualRuleName = new RuleName("Name", "The characteristics of someone or something", "Json", "Template",
@@ -39,9 +34,6 @@ class RuleNameTest {
         assertEquals(0, actualRuleName.getId());
     }
 
-    /**
-     * Method under test: {@link RuleName#RuleName(RuleNameDTO)}
-     */
     @Test
     void testConstructor3() {
         RuleName actualRuleName = new RuleName(new RuleNameDTO(new RuleName()));

@@ -7,9 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 class RatingTest {
-    /**
-     * Method under test: {@link Rating#Rating()}
-     */
+
     @Test
     void testConstructor() {
         Rating actualRating = new Rating();
@@ -20,9 +18,6 @@ class RatingTest {
         assertEquals(0, actualRating.getId());
     }
 
-    /**
-     * Method under test: {@link Rating#Rating(String, String, String, int)}
-     */
     @Test
     void testConstructor2() {
         Rating actualRating = new Rating("Moodys Rating", "Sand PRating", "Fitch Rating", 10);
@@ -34,9 +29,6 @@ class RatingTest {
         assertEquals(0, actualRating.getId());
     }
 
-    /**
-     * Method under test: {@link Rating#Rating(RatingDTO)}
-     */
     @Test
     void testConstructor3() {
         assertEquals(0, (new Rating(new RatingDTO(new Rating()))).getOrderNumber());

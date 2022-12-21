@@ -3,8 +3,7 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.dao.BidList;
 import com.nnk.springboot.domain.dto.BidListDTO;
 import com.nnk.springboot.services.BidListService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,16 +18,17 @@ import java.util.List;
 
 
 @Controller
+@Slf4j
 public class BidListController {
     @Autowired
     BidListService bService;
 
-    private static final Logger logger = LogManager.getLogger(BidListController.class);
+   // private static final Logger logger = LogManager.getLogger(BidListController.class);
 
     @RequestMapping("/bidList/list")
     public String home(Model model)
     {
-        logger.info("Checklist of all the additions in the database");
+        log.info("Checklist of all the additions in the database");
         model.addAttribute("bidLists",bService.getAll());
         return "bidList/list";
     }
@@ -36,7 +36,7 @@ public class BidListController {
     @GetMapping("/bidList/add")
     public String addBidForm(Model model)
     {
-        logger.info("Saving the bid into our database please wait");
+        log.info("Saving the bid into our database please wait");
         model.addAttribute(new BidList());
         return "bidList/add";
     }
@@ -45,12 +45,12 @@ public class BidListController {
     @PostMapping("/bidList/validate")
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
         if(result.hasErrors()){
-            logger.info("Result doesn't seem to be alright");
+            log.info("Result doesn't seem to be alright");
             return "bidList/add";
         }
-        logger.info("Saving the bid into our database please wait");
+        log.info("Saving the bid into our database please wait");
         bService.saveBid(bid);
-        logger.info("Checklist of all the additions in the database");
+        log.info("Checklist of all the additions in the database");
         model.addAttribute(bService.getAll());
         return "redirect:/bidList/list";
     }
@@ -65,27 +65,27 @@ public class BidListController {
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
         if(result.hasErrors()){
-            logger.info("Bid seems wrong, please try again.");
-            return "redirect:/bidList/add";
+            log.info("Bid seems wrong, please try again.");
+            return "redirect:/bidList/update/{id}";
         }
-        logger.info("Updating in progress...");
+        log.info("Updating in progress...");
         bService.update(new BidListDTO(bidList), id);
-        logger.info("Successfully updated!");
+        log.info("Successfully updated!");
         model.addAttribute(bService.getAll());
-        logger.info("Checklist if update is missing");
+        log.info("Checklist if update is missing");
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
-        logger.info("Looking for the bid to delete, please wait");
+        log.info("Looking for the bid to delete, please wait");
         BidList bList = bService.findById(id);
-        logger.info("Deleting the bid" + bList);
+        log.info("Deleting the bid" + bList);
         bService.delete(bList);
-        logger.info("Bid list deleted...");
+        log.info("Bid list deleted...");
         List<BidList> list = bService.getAll();
         model.addAttribute(list);
-        logger.info("Check list if correct: " + list );
+        log.info("Check list if correct: " + list );
         return "redirect:/bidList/list";
     }
 }

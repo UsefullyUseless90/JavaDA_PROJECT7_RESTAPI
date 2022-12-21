@@ -64,7 +64,7 @@ public class RatingController {
                              BindingResult result, Model model) {
         if(result.hasErrors()|| id != rating.getId()){
             logger.info("Fiels are incorrect, please try again");
-            return "redirect:/rating/add";
+            return "redirect:/rating/update/{id}";
         }
         logger.info("Saving rating "+ id +"into database...");
         rService.save(rating);

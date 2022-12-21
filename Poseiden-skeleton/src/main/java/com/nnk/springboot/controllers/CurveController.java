@@ -66,7 +66,7 @@ public class CurveController {
                              BindingResult result, Model model) {
         if(result.hasErrors() || id != curvePoint.getId()){
             logger.info("Fiels are incorrect, please try again");
-            return "redirect:/curvePoint/add";
+            return "redirect:/curvePoint/update/{id}";
         }
         logger.info("Saving curve into database...");
         cPS.saveCurve(new CurvePointDTO(curvePoint));

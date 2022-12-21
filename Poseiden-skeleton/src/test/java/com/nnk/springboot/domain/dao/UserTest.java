@@ -7,9 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 class UserTest {
-    /**
-     * Method under test: {@link User#User()}
-     */
+
     @Test
     void testConstructor() {
         User actualUser = new User();
@@ -31,9 +29,6 @@ class UserTest {
         assertEquals(1, actualUser.getId().intValue());
     }
 
-    /**
-     * Method under test: {@link User#User(UserDTO)}
-     */
     @Test
     void testConstructor3() {
         User actualUser = new User(new UserDTO(new User(1, "janedoe", "iloveyou","user")));

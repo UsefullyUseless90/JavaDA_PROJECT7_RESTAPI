@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @Entity
@@ -15,12 +16,18 @@ public class RuleName {
     // TODO: Map columns in data table RULENAME with corresponding java fields
     @Id
     private int id;
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String description;
+    @NotEmpty
     private String json;
+    @NotEmpty
     private String template;
+    @NotEmpty
     @Column(name = "sqlStr")
     private String sqlStr;
+    @NotEmpty
     @Column(name="sqlPart")
     private String sqlPart;
 

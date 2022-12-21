@@ -7,9 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 class CurvePointTest {
-    /**
-     * Method under test: {@link CurvePoint#CurvePoint()}
-     */
+
     @Test
     void testConstructor() {
         CurvePoint actualCurvePoint = new CurvePoint();
@@ -21,9 +19,6 @@ class CurvePointTest {
         assertNull(actualCurvePoint.getCreationDate());
     }
 
-    /**
-     * Method under test: {@link CurvePoint#CurvePoint(int, double, double)}
-     */
     @Test
     void testConstructor2() {
         CurvePoint actualCurvePoint = new CurvePoint(123, 10.0d, 10.0d);
@@ -33,9 +28,6 @@ class CurvePointTest {
         assertEquals(123, actualCurvePoint.getCurveId());
     }
 
-    /**
-     * Method under test: {@link CurvePoint#CurvePoint(CurvePointDTO)}
-     */
     @Test
     void testConstructor3() {
         CurvePoint actualCurvePoint = new CurvePoint(new CurvePointDTO(new CurvePoint()));

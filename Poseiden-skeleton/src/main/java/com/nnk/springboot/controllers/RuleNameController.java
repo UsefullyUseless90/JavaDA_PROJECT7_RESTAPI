@@ -69,7 +69,7 @@ public class RuleNameController {
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             logger.info("Fiels are incorrect, please try again");
-            return "redirect:/ruleName/add";
+            return "redirect:/ruleName/update/{id}";
         }
         logger.info("Saving rule names into database...");
         rnService.update(new RuleNameDTO(ruleName));

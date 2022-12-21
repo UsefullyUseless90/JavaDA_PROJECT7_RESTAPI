@@ -6,6 +6,9 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+
 @Data
 @Entity
 @Table(name = "rating")
@@ -14,9 +17,13 @@ public class Rating {
 
     @Id
     private int id;
+    @NotEmpty
     private String moodysRating;
+    @NotEmpty
     private String sandPRating;
+    @NotEmpty
     private String fitchRating;
+    @Positive
     private int orderNumber;
 
     public Rating(String moodysRating, String sandPRating, String fitchRating, int orderNumber) {

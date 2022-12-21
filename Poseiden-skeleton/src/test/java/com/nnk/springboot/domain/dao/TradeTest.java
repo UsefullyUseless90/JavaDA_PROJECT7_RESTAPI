@@ -7,9 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 class TradeTest {
-    /**
-     * Method under test: {@link Trade#Trade()}
-     */
+
     @Test
     void testConstructor() {
         Trade actualTrade = new Trade();
@@ -36,9 +34,6 @@ class TradeTest {
         assertNull(actualTrade.getBenchmark());
     }
 
-    /**
-     * Method under test: {@link Trade#Trade(int, String, String, Double)}
-     */
     @Test
     void testConstructor2() {
         Trade actualTrade = new Trade(123, "Type", "3", 10.0d);
@@ -66,9 +61,6 @@ class TradeTest {
         assertNull(actualTrade.getBenchmark());
     }
 
-    /**
-     * Method under test: {@link Trade#Trade(TradeDTO)}
-     */
     @Test
     void testConstructor3() {
         Trade actualTrade = new Trade(new TradeDTO(new Trade()));

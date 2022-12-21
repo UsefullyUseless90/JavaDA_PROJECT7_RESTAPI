@@ -50,7 +50,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers( "/admin/home", "/user/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().successHandler(authenticationSuccessHandler()).permitAll()
+                .formLogin()
+                .and()
+                .oauth2Login()
+                .successHandler(authenticationSuccessHandler()).permitAll()
                 .defaultSuccessUrl("/bidList/list")
                 .and()
                 .logout()
@@ -59,8 +62,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
                 .clearAuthentication(true).permitAll();
-
-
 
     }
 

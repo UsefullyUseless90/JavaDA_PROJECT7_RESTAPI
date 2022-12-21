@@ -65,7 +65,7 @@ public class TradeController {
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             logger.info("Fiels are incorrect, please try again");
-            return "redirect:/trade/add";
+            return "redirect:/trade/update/{id}";
         }
         logger.info("Saving trade into database...");
         tService.update(new TradeDTO(trade), id);

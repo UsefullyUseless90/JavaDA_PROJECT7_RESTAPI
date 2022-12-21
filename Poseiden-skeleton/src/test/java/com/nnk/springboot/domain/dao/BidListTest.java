@@ -10,9 +10,7 @@ import static org.junit.Assert.assertNull;
 @SpringBootTest(classes = Application.class)
 
 public class BidListTest {
-    /**
-     * Method under test: {@link BidList#BidList()}
-     */
+
     @Test
     public void testConstructor() {
         BidList actualBidList = new BidList();
@@ -40,9 +38,6 @@ public class BidListTest {
         assertEquals(0.0d, actualBidList.getAsk());
     }
 
-    /**
-     * Method under test: {@link BidList#BidList(Integer, String, String, double)}
-     */
     @Test
     public void testConstructor2() {
         BidList actualBidList = new BidList(1, "3", "Type", 10.0d);
@@ -71,9 +66,6 @@ public class BidListTest {
         assertEquals(0.0d, actualBidList.getAsk());
     }
 
-    /**
-     * Method under test: {@link BidList#BidList(BidListDTO)}
-     */
     @Test
     public void testConstructor3() {
         BidList actualBidList = new BidList(new BidListDTO(new BidList()));
