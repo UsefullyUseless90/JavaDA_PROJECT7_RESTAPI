@@ -23,11 +23,9 @@ public class User {
     @Pattern(regexp = "^[A-Za-z]*$")
     @NotBlank(message = "Username is mandatory")
     private String username;
-    @Pattern(regexp = "^[A-Za-z]*$")
-    @NotBlank(message = "Password is mandatory")
     @Pattern(regexp = "^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,70}$", message = "The password must contain at least an uppercase letter, a number and a special character")
     private String password;
-    @Pattern(regexp = "^[A-Za-z]*$")
+    @Pattern(regexp = "^[A-Za-z\\s]*$")
     @NotBlank(message = "FullName is mandatory")
     private String fullname;
     @NotBlank(message = "Role is mandatory")

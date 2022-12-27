@@ -26,7 +26,7 @@ import static org.mockito.Mockito.verify;
 public class IBidListServiceTest {
 
     @InjectMocks
-    public IBidListService IBidListService;
+    public IBidListService BidListService;
 
     @Mock
     public BidListRepository bRepos;
@@ -55,25 +55,25 @@ public class IBidListServiceTest {
         bListDTO3 = new BidListDTO(bidList3);
         bidListDtos = Arrays.asList(bListDTO, bListDTO2, bListDTO3);
         // Initialising Service layer
-        IBidListService = new IBidListService(bRepos);
+        BidListService = new IBidListService(bRepos);
     }
 
     @Test
     public void getAllTest() {
         Mockito.when(bRepos.findAll()).thenReturn(bLists);
-        Assert.assertEquals(bLists, IBidListService.getAll());
+        Assert.assertEquals(bLists, BidListService.getAll());
     }
 
     @Test
     public void findByIdTest() {
         Mockito.when(bRepos.findById(Mockito.anyInt())).thenReturn(Optional.of(bidList));
-        Assert.assertEquals(bidList, IBidListService.findById(1));
+        Assert.assertEquals(bidList, BidListService.findById(1));
     }
 
     @Test
     public void saveTest() {
         BidList bListTest = new BidList(1, "Account", "Type 1", 10d);
-        IBidListService.saveBid(bListTest);
+        BidListService.saveBid(bListTest);
         verify(bRepos, times(1)).save(bListTest);
     }
 
@@ -82,7 +82,7 @@ public class IBidListServiceTest {
         Mockito.when(bRepos.findById(Mockito.anyInt())).thenReturn(Optional.of(bidList));
         BidList bList = new BidList(1, "New bidList", "Type 1", 20d);
         BidListDTO bidListDTO = new BidListDTO(bList);
-        IBidListService.update(bidListDTO, 1);
+        BidListService.update(bidListDTO, 1);
         BidList updatedBList = new BidList(2, "Bid test", "test", 20d);
         Assert.assertEquals(updatedBList.getBidListId(), 2);
         Assert.assertEquals(updatedBList.getAccount(),"Bid test");

@@ -183,7 +183,6 @@
                 <configuration>
                     <excludes>
                         <exclude>com/nnk/springboot/domain/**/</exclude>
-                        <exclude>com/nnk/springboot/services/CustomUserDetailsService/</exclude>
                         <exclude>com/nnk/springboot/config/**/</exclude>
                     </excludes>
                 </configuration>

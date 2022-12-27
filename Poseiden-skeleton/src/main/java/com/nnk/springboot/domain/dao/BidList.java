@@ -22,11 +22,11 @@ public class BidList {
     @Column(name = "bid_list_id")
     private int bidListId;
     @NotEmpty
-    @Pattern (regexp = "^[A-Za-z]*$", message = "Please specify account")
+    @Pattern (regexp = "^[A-Za-z\\s]*$", message = "Please specify account")
     @Column(name = "account")
     private String account;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify type")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message = "Please specify type")
     @Column(name = "type")
     private String type;
     @Positive(message = "Quantity must be positive!")

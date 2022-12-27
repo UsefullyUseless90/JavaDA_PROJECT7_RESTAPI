@@ -2,7 +2,7 @@
 
 import com.nnk.springboot.domain.dao.Trade;
 import com.nnk.springboot.domain.dto.TradeDTO;
-import com.nnk.springboot.services.TradeService;
+import com.nnk.springboot.services.implementation.ITradeService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
 <span class="fc" id="L21">public class TradeController {</span>
 
     @Autowired
-    TradeService tService;
+    ITradeService tService;
 
 <span class="fc" id="L26">    private static final Logger logger = LogManager.getLogger(TradeController.class);</span>
 
@@ -65,7 +65,7 @@ import java.util.List;
                              BindingResult result, Model model) {
 <span class="fc bfc" id="L66" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
 <span class="fc" id="L67">            logger.info(&quot;Fiels are incorrect, please try again&quot;);</span>
-<span class="fc" id="L68">            return &quot;redirect:/trade/add&quot;;</span>
+<span class="fc" id="L68">            return &quot;redirect:/trade/update/{id}&quot;;</span>
         }
 <span class="fc" id="L70">        logger.info(&quot;Saving trade into database...&quot;);</span>
 <span class="fc" id="L71">        tService.update(new TradeDTO(trade), id);</span>

@@ -3,7 +3,7 @@
 import com.nnk.springboot.domain.dao.RuleName;
 import com.nnk.springboot.domain.dto.RuleNameDTO;
 import com.nnk.springboot.repositories.RuleNameRepository;
-import com.nnk.springboot.services.RuleNameService;
+import com.nnk.springboot.services.implementation.IRuleNameService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import java.util.List;
     @Autowired
     RuleNameRepository rnRepo;
     @Autowired
-    RuleNameService rnService;
+    IRuleNameService rnService;
 
 <span class="fc" id="L29">    private static final Logger logger = LogManager.getLogger(RuleNameController.class);</span>
 
@@ -69,7 +69,7 @@ import java.util.List;
                              BindingResult result, Model model) {
 <span class="fc bfc" id="L70" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
 <span class="fc" id="L71">            logger.info(&quot;Fiels are incorrect, please try again&quot;);</span>
-<span class="fc" id="L72">            return &quot;redirect:/ruleName/add&quot;;</span>
+<span class="fc" id="L72">            return &quot;redirect:/ruleName/update/{id}&quot;;</span>
         }
 <span class="fc" id="L74">        logger.info(&quot;Saving rule names into database...&quot;);</span>
 <span class="fc" id="L75">        rnService.update(new RuleNameDTO(ruleName));</span>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IRuleNameService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-skeleton</a> &gt; <a href="index.source.html" class="el_package">com.nnk.springboot.services.implementation</a> &gt; <span class="el_source">IRuleNameService.java</span></div><h1>IRuleNameService.java</h1><pre class="source lang-java linenums">package com.nnk.springboot.services.implementation;
+
+import com.nnk.springboot.domain.dao.RuleName;
+import com.nnk.springboot.domain.dto.RuleNameDTO;
+import com.nnk.springboot.repositories.RuleNameRepository;
+import com.nnk.springboot.services.RuleNameService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+@Service
+@Transactional
+<span class="fc" id="L15">@AllArgsConstructor</span>
+public class IRuleNameService implements RuleNameService {
+
+    @Autowired
+    RuleNameRepository rnRepo;
+
+    public List&lt;RuleName&gt; findAll(){
+<span class="fc" id="L22">        List&lt;RuleName&gt; ruleNameList = rnRepo.findAll();</span>
+<span class="fc" id="L23">        return ruleNameList;</span>
+    }
+    public RuleName findById(int id){
+<span class="fc" id="L26">        RuleName rName = rnRepo.findById(id).orElse(null);</span>
+<span class="fc" id="L27">        return rName;</span>
+    }
+    public RuleName save(RuleNameDTO ruleNameDTO){
+<span class="fc" id="L30">        RuleName rName = new RuleName(ruleNameDTO);</span>
+<span class="fc" id="L31">        rnRepo.save(rName);</span>
+<span class="fc" id="L32">        return rName;</span>
+    }
+
+    public RuleName update(RuleNameDTO ruleNameDTO){
+<span class="fc" id="L36">        RuleName rName = rnRepo.findById(ruleNameDTO.getId()).orElse(null);</span>
+<span class="fc" id="L37">        rName.setId(ruleNameDTO.getId());</span>
+<span class="fc" id="L38">        rName.setName(ruleNameDTO.getName());</span>
+<span class="fc" id="L39">        rName.setDescription(ruleNameDTO.getDescription());</span>
+<span class="fc" id="L40">        rName.setJson(ruleNameDTO.getJson());</span>
+<span class="fc" id="L41">        rName.setTemplate(ruleNameDTO.getTemplate());</span>
+<span class="fc" id="L42">        rName.setSqlStr(ruleNameDTO.getSqlStr());</span>
+<span class="fc" id="L43">        rName.setSqlPart(ruleNameDTO.getSqlPart());</span>
+<span class="fc" id="L44">        rnRepo.save(rName);</span>
+<span class="fc" id="L45">        return rName;</span>
+    }
+    public RuleName delete(RuleNameDTO ruleNameDTO){
+<span class="fc" id="L48">        RuleName rName = rnRepo.findById(ruleNameDTO.getId()).orElse(null);</span>
+<span class="fc" id="L49">        rnRepo.delete(rName);</span>
+<span class="fc" id="L50">        return rName;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

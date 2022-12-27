@@ -10,22 +10,22 @@ import javax.validation.constraints.Pattern;
 public class RuleNameDTO {
     private int id;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify name")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message = "Please specify name")
     private String name;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify description")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message = "Please specify description")
     private String description;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify json")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message = "Please specify json")
     private String json;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify template")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message = "Please specify template")
     private String template;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify sqlStr")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message = "Please specify sqlStr")
     private String sqlStr;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message =  "Please specify sqlPart ")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message =  "Please specify sqlPart ")
     private String sqlPart;
 
     public RuleNameDTO(RuleName ruleName) {

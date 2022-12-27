@@ -19,13 +19,13 @@ public class Rating {
     @Id
     private int id;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify Moodys Rating")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message = "Please specify Moodys Rating")
     private String moodysRating;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify sandPRating")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message = "Please specify sandPRating")
     private String sandPRating;
     @NotEmpty
-    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify fitchRating ")
+    @Pattern(regexp = "^[A-Za-z\\s]*$", message = "Please specify fitchRating ")
     private String fitchRating;
     @Positive(message = "Please specify the order number")
     private int orderNumber;

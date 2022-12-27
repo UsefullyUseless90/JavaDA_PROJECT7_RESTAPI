@@ -2,7 +2,7 @@
 
 import com.nnk.springboot.domain.dao.User;
 import com.nnk.springboot.repositories.UserRepository;
-import com.nnk.springboot.services.UserService;
+import com.nnk.springboot.services.implementation.IUserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import javax.validation.Valid;
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private UserService uService;
+    private IUserService uService;
 
 <span class="fc" id="L27">    private static final Logger logger = LogManager.getLogger(UserController.class);</span>
 
@@ -61,7 +61,7 @@ import javax.validation.Valid;
     @PostMapping(&quot;/user/update/{id}&quot;)
     public String updateUser(@PathVariable(&quot;id&quot;) Integer id, @Valid User user,
                              BindingResult result, Model model) {
-<span class="pc bpc" id="L64" title="1 of 4 branches missed.">        if (result.hasErrors() || id != user.getId() ) {</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if (result.hasErrors()) {</span>
 <span class="fc" id="L65">            return &quot;user/update&quot;;</span>
         }
 

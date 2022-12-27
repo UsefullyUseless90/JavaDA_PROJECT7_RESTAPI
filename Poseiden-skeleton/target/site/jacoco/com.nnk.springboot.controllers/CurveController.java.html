@@ -2,7 +2,7 @@
 
 import com.nnk.springboot.domain.dao.CurvePoint;
 import com.nnk.springboot.domain.dto.CurvePointDTO;
-import com.nnk.springboot.services.CurvePointService;
+import com.nnk.springboot.services.implementation.ICurvePointService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.List;
 @Controller
 <span class="fc" id="L21">public class CurveController {</span>
     @Autowired
-    CurvePointService cPS;
+    ICurvePointService cPS;
 
 <span class="fc" id="L25">    private static final Logger logger = LogManager.getLogger(CurveController.class);</span>
 
@@ -66,7 +66,7 @@ import java.util.List;
                              BindingResult result, Model model) {
 <span class="pc bpc" id="L67" title="1 of 4 branches missed.">        if(result.hasErrors() || id != curvePoint.getId()){</span>
 <span class="fc" id="L68">            logger.info(&quot;Fiels are incorrect, please try again&quot;);</span>
-<span class="fc" id="L69">            return &quot;redirect:/curvePoint/add&quot;;</span>
+<span class="fc" id="L69">            return &quot;redirect:/curvePoint/update/{id}&quot;;</span>
         }
 <span class="fc" id="L71">        logger.info(&quot;Saving curve into database...&quot;);</span>
 <span class="fc" id="L72">        cPS.saveCurve(new CurvePointDTO(curvePoint));</span>

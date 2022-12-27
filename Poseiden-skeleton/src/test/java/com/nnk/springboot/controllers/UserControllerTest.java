@@ -124,7 +124,7 @@ public class UserControllerTest {
     void UpdateUserControllerTest() throws Exception {
         when(uService.save(user)).thenReturn(user);
         user.setFullname("James Bond");
-        mvc.perform(post("/user/update/1")
+        mvc.perform(post("/user/update/7")
                         .sessionAttr("user", user)
                         .param("username", user.getUsername())
                         .param("password", user.getPassword())

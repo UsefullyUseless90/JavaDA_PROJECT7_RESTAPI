@@ -2,9 +2,8 @@
 
 import com.nnk.springboot.domain.dao.BidList;
 import com.nnk.springboot.domain.dto.BidListDTO;
-import com.nnk.springboot.services.BidListService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.nnk.springboot.services.implementation.IBidListService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,16 +18,17 @@ import java.util.List;
 
 
 @Controller
+<span class="fc" id="L21">@Slf4j</span>
 <span class="fc" id="L22">public class BidListController {</span>
     @Autowired
-    BidListService bService;
+    IBidListService bService;
 
-<span class="fc" id="L26">    private static final Logger logger = LogManager.getLogger(BidListController.class);</span>
+   // private static final Logger logger = LogManager.getLogger(BidListController.class);
 
     @RequestMapping(&quot;/bidList/list&quot;)
     public String home(Model model)
     {
-<span class="fc" id="L31">        logger.info(&quot;Checklist of all the additions in the database&quot;);</span>
+<span class="fc" id="L31">        log.info(&quot;Checklist of all the additions in the database&quot;);</span>
 <span class="fc" id="L32">        model.addAttribute(&quot;bidLists&quot;,bService.getAll());</span>
 <span class="fc" id="L33">        return &quot;bidList/list&quot;;</span>
     }
@@ -36,7 +36,7 @@ import java.util.List;
     @GetMapping(&quot;/bidList/add&quot;)
     public String addBidForm(Model model)
     {
-<span class="fc" id="L39">        logger.info(&quot;Saving the bid into our database please wait&quot;);</span>
+<span class="fc" id="L39">        log.info(&quot;Saving the bid into our database please wait&quot;);</span>
 <span class="fc" id="L40">        model.addAttribute(new BidList());</span>
 <span class="fc" id="L41">        return &quot;bidList/add&quot;;</span>
     }
@@ -45,12 +45,12 @@ import java.util.List;
     @PostMapping(&quot;/bidList/validate&quot;)
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
 <span class="fc bfc" id="L47" title="All 2 branches covered.">        if(result.hasErrors()){</span>
-<span class="fc" id="L48">            logger.info(&quot;Result doesn't seem to be alright&quot;);</span>
+<span class="fc" id="L48">            log.info(&quot;Result doesn't seem to be alright&quot;);</span>
 <span class="fc" id="L49">            return &quot;bidList/add&quot;;</span>
         }
-<span class="fc" id="L51">        logger.info(&quot;Saving the bid into our database please wait&quot;);</span>
+<span class="fc" id="L51">        log.info(&quot;Saving the bid into our database please wait&quot;);</span>
 <span class="fc" id="L52">        bService.saveBid(bid);</span>
-<span class="fc" id="L53">        logger.info(&quot;Checklist of all the additions in the database&quot;);</span>
+<span class="fc" id="L53">        log.info(&quot;Checklist of all the additions in the database&quot;);</span>
 <span class="fc" id="L54">        model.addAttribute(bService.getAll());</span>
 <span class="fc" id="L55">        return &quot;redirect:/bidList/list&quot;;</span>
     }
@@ -64,28 +64,28 @@ import java.util.List;
     @PostMapping(&quot;/bidList/update/{id}&quot;)
     public String updateBid(@PathVariable(&quot;id&quot;) Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
-<span class="fc bfc" id="L67" title="All 4 branches covered.">        if(result.hasErrors() || id != bidList.getBidListId()){</span>
-<span class="fc" id="L68">            logger.info(&quot;Bid seems wrong, please try again.&quot;);</span>
-<span class="fc" id="L69">            return &quot;redirect:/bidList/add&quot;;</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if(result.hasErrors()){</span>
+<span class="fc" id="L68">            log.info(&quot;Bid seems wrong, please try again.&quot;);</span>
+<span class="fc" id="L69">            return &quot;redirect:/bidList/update/{id}&quot;;</span>
         }
-<span class="fc" id="L71">        logger.info(&quot;Updating in progress...&quot;);</span>
+<span class="fc" id="L71">        log.info(&quot;Updating in progress...&quot;);</span>
 <span class="fc" id="L72">        bService.update(new BidListDTO(bidList), id);</span>
-<span class="fc" id="L73">        logger.info(&quot;Successfully updated!&quot;);</span>
+<span class="fc" id="L73">        log.info(&quot;Successfully updated!&quot;);</span>
 <span class="fc" id="L74">        model.addAttribute(bService.getAll());</span>
-<span class="fc" id="L75">        logger.info(&quot;Checklist if update is missing&quot;);</span>
+<span class="fc" id="L75">        log.info(&quot;Checklist if update is missing&quot;);</span>
 <span class="fc" id="L76">        return &quot;redirect:/bidList/list&quot;;</span>
     }
 
     @GetMapping(&quot;/bidList/delete/{id}&quot;)
     public String deleteBid(@PathVariable(&quot;id&quot;) Integer id, Model model) {
-<span class="fc" id="L81">        logger.info(&quot;Looking for the bid to delete, please wait&quot;);</span>
+<span class="fc" id="L81">        log.info(&quot;Looking for the bid to delete, please wait&quot;);</span>
 <span class="fc" id="L82">        BidList bList = bService.findById(id);</span>
-<span class="fc" id="L83">        logger.info(&quot;Deleting the bid&quot; + bList);</span>
+<span class="fc" id="L83">        log.info(&quot;Deleting the bid&quot; + bList);</span>
 <span class="fc" id="L84">        bService.delete(bList);</span>
-<span class="fc" id="L85">        logger.info(&quot;Bid list deleted...&quot;);</span>
+<span class="fc" id="L85">        log.info(&quot;Bid list deleted...&quot;);</span>
 <span class="fc" id="L86">        List&lt;BidList&gt; list = bService.getAll();</span>
 <span class="fc" id="L87">        model.addAttribute(list);</span>
-<span class="fc" id="L88">        logger.info(&quot;Check list if correct: &quot; + list );</span>
+<span class="fc" id="L88">        log.info(&quot;Check list if correct: &quot; + list );</span>
 <span class="fc" id="L89">        return &quot;redirect:/bidList/list&quot;;</span>
     }
 }
