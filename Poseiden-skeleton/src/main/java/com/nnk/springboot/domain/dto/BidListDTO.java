@@ -16,8 +16,7 @@ public class BidListDTO {
     @NotEmpty
     @NotBlank(message = "Please specify type")
     private String type;
-    @Positive
-    @NotBlank(message = "Quantity must be positive!")
+    @Positive(message = "Quantity must be positive!")
     private double bidQuantity;
 
     public BidListDTO(BidList bidList) {

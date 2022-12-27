@@ -7,8 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Data
 @Entity
@@ -18,23 +18,23 @@ public class RuleName {
     @Id
     private int id;
     @NotEmpty
-    @NotBlank(message = "Please specify name")
+    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify name")
     private String name;
     @NotEmpty
-    @NotBlank(message = "Please specify description")
+    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify description")
     private String description;
     @NotEmpty
-    @NotBlank(message = "Please specify json")
+    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify json")
     private String json;
     @NotEmpty
-    @NotBlank(message = "Please specify template")
+    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify template")
     private String template;
     @NotEmpty
-    @NotBlank(message = "Please specify sqlStr")
+    @Pattern(regexp = "^[A-Za-z]*$", message = "Please specify sqlStr")
     @Column(name = "sqlStr")
     private String sqlStr;
     @NotEmpty
-    @NotBlank(message = "Please specify sqlPart ")
+    @Pattern(regexp = "^[A-Za-z]*$", message =  "Please specify sqlPart ")
     @Column(name="sqlPart")
     private String sqlPart;
 

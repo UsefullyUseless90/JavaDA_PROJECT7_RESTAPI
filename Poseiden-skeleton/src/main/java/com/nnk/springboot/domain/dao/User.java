@@ -20,11 +20,14 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+    @Pattern(regexp = "^[A-Za-z]*$")
     @NotBlank(message = "Username is mandatory")
     private String username;
+    @Pattern(regexp = "^[A-Za-z]*$")
     @NotBlank(message = "Password is mandatory")
     @Pattern(regexp = "^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,70}$", message = "The password must contain at least an uppercase letter, a number and a special character")
     private String password;
+    @Pattern(regexp = "^[A-Za-z]*$")
     @NotBlank(message = "FullName is mandatory")
     private String fullname;
     @NotBlank(message = "Role is mandatory")

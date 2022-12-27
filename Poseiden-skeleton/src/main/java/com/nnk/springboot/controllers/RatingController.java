@@ -62,7 +62,7 @@ public class RatingController {
     @PostMapping("/rating/update/{id}")
     public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
                              BindingResult result, Model model) {
-        if(result.hasErrors()|| id != rating.getId()){
+        if(result.hasErrors()){
             logger.info("Fiels are incorrect, please try again");
             return "redirect:/rating/update/{id}";
         }
