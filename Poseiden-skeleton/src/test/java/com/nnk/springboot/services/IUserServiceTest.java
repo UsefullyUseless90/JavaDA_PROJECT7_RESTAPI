@@ -3,6 +3,8 @@ package com.nnk.springboot.services;
 import com.nnk.springboot.domain.dao.User;
 import com.nnk.springboot.domain.dto.UserDTO;
 import com.nnk.springboot.repositories.UserRepository;
+import com.nnk.springboot.services.implementation.CustomUserDetailsService;
+import com.nnk.springboot.services.implementation.IUserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,8 +26,8 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class UserServiceTest {
-    private UserService userService;
+public class IUserServiceTest {
+    private IUserService IUserService;
 
     @Mock
     private UserRepository uRepo;
@@ -34,7 +36,7 @@ public class UserServiceTest {
     private CustomUserDetailsService customUserDetailsService;
 
     @InjectMocks
-    private UserService uService;
+    private IUserService uService;
 
     private List<User> userList;
     private User user;
@@ -59,19 +61,19 @@ public class UserServiceTest {
         uDTO3 = new UserDTO(user3);
         uDTOList = Arrays.asList(uDTO, uDTO2, uDTO3);
         // Initialising Service layer
-        userService = new UserService(uRepo, customUserDetailsService);
+        IUserService = new IUserService(uRepo, customUserDetailsService);
     }
 
     @Test
     public void getAll() {
         Mockito.when(uRepo.findAll()).thenReturn(userList);
-        Assert.assertEquals(userList, userService.findAll());
+        Assert.assertEquals(userList, IUserService.findAll());
     }
 
     @Test
     public void getById() {
         Mockito.when(uRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(user));
-        Assert.assertEquals(user, userService.findById(1));
+        Assert.assertEquals(user, IUserService.findById(1));
     }
 
     @Test
@@ -88,14 +90,14 @@ public class UserServiceTest {
         Mockito.when(uRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(user));
         user.setFullname("James Bond");
         UserDTO userUpdateTest = new UserDTO(user);
-        userService.update(userUpdateTest);
+        IUserService.update(userUpdateTest);
         verify(uRepo, times(1)).save(user);
     }
 
     @Test
     public void delete() {
         Mockito.when(uRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(user));
-        userService.delete(new UserDTO(user));
+        IUserService.delete(new UserDTO(user));
         verify(uRepo, times(1)).delete(user);
     }
 }

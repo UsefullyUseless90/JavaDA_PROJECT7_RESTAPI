@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import java.sql.Date;
@@ -21,12 +22,15 @@ public class BidList {
     @Column(name = "bid_list_id")
     private int bidListId;
     @NotEmpty
+    @NotBlank(message = "Please specify account")
     @Column(name = "account")
     private String account;
     @NotEmpty
+    @NotBlank(message = "Please specify type")
     @Column(name = "type")
     private String type;
     @Positive
+    @NotBlank(message = "Quantity must be positive!")
     @Column(name = "bidQuantity")
     private double bidQuantity;
     @Column(name = "askQuantity")

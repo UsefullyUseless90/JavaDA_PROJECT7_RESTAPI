@@ -3,7 +3,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.dao.RuleName;
 import com.nnk.springboot.domain.dto.RuleNameDTO;
-import com.nnk.springboot.services.RuleNameService;
+import com.nnk.springboot.services.implementation.IRuleNameService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -29,7 +29,7 @@ public class RuleNameControllerTest {
 
     private MockMvc mvc;
     @MockBean
-    private RuleNameService rService;
+    private IRuleNameService rService;
     @Autowired
     private WebApplicationContext context;
 

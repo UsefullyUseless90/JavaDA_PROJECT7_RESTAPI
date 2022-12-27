@@ -2,7 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.dao.User;
 import com.nnk.springboot.repositories.UserRepository;
-import com.nnk.springboot.services.UserService;
+import com.nnk.springboot.services.implementation.IUserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
     @Autowired
-    private UserService uService;
+    private IUserService uService;
 
     private static final Logger logger = LogManager.getLogger(UserController.class);
 

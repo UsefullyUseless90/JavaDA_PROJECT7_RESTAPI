@@ -1,7 +1,7 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.dao.Rating;
-import com.nnk.springboot.services.RatingService;
+import com.nnk.springboot.services.implementation.IRatingService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.List;
 @Controller
 public class RatingController {
     @Autowired
-    RatingService rService;
+    IRatingService rService;
 
     private static final Logger logger = LogManager.getLogger(RatingController.class);
 

@@ -4,6 +4,7 @@ import com.nnk.springboot.domain.dto.TradeDTO;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import java.util.Date;
@@ -18,10 +19,12 @@ public class Trade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tradeId;
     @NotEmpty
+    @NotBlank(message = "Please specify account")
     private String account;
     @NotEmpty
+    @NotBlank(message = "Please specify type")
     private String type;
-    @Positive
+    @Positive(message = "Quantity must be positive!")
     private double buyQuantity;
     private double sellQuantity;
     private double buyPrice;

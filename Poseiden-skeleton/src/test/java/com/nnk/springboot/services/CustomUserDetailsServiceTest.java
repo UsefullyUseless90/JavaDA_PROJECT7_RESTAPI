@@ -2,6 +2,7 @@ package com.nnk.springboot.services;
 
 import com.nnk.springboot.domain.dao.User;
 import com.nnk.springboot.repositories.UserRepository;
+import com.nnk.springboot.services.implementation.CustomUserDetailsService;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;

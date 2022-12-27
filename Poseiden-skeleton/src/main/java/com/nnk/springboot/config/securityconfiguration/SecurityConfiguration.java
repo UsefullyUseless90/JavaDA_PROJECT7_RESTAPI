@@ -1,6 +1,6 @@
 package com.nnk.springboot.config.securityconfiguration;
 
-import com.nnk.springboot.services.CustomUserDetailsService;
+import com.nnk.springboot.services.implementation.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,6 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                .defaultSuccessUrl("/bidList/list")
                 .and()
                 .oauth2Login()
                 .successHandler(authenticationSuccessHandler()).permitAll()

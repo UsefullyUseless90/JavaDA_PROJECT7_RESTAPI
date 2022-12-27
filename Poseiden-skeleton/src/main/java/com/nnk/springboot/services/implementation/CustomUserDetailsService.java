@@ -1,4 +1,4 @@
-package com.nnk.springboot.services;
+package com.nnk.springboot.services.implementation;
 
 import com.nnk.springboot.repositories.UserRepository;
 import lombok.AllArgsConstructor;

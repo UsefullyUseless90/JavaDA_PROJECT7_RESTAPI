@@ -3,6 +3,7 @@ package com.nnk.springboot.services;
 import com.nnk.springboot.domain.dao.CurvePoint;
 import com.nnk.springboot.domain.dto.CurvePointDTO;
 import com.nnk.springboot.repositories.CurvePointRepository;
+import com.nnk.springboot.services.implementation.ICurvePointService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,10 +25,10 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class CurvePointServiceTest {
+public class ICurvePointServiceTest {
 
     @InjectMocks
-    public CurvePointService cPS;
+    public ICurvePointService cPS;
 
     @Mock
     public CurvePointRepository cPRepo;
@@ -56,7 +57,7 @@ public class CurvePointServiceTest {
         cPDTO3 = new CurvePointDTO(cPoint3);
         cPListDTO = Arrays.asList(cPDTO, cPDTO2, cPDTO3);
         // Initialising Service layer
-        cPS = new CurvePointService(cPRepo);
+        cPS = new ICurvePointService(cPRepo);
     }
 
     @Test

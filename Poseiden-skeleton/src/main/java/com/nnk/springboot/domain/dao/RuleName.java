@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Data
@@ -17,17 +18,23 @@ public class RuleName {
     @Id
     private int id;
     @NotEmpty
+    @NotBlank(message = "Please specify name")
     private String name;
     @NotEmpty
+    @NotBlank(message = "Please specify description")
     private String description;
     @NotEmpty
+    @NotBlank(message = "Please specify json")
     private String json;
     @NotEmpty
+    @NotBlank(message = "Please specify template")
     private String template;
     @NotEmpty
+    @NotBlank(message = "Please specify sqlStr")
     @Column(name = "sqlStr")
     private String sqlStr;
     @NotEmpty
+    @NotBlank(message = "Please specify sqlPart ")
     @Column(name="sqlPart")
     private String sqlPart;
 
