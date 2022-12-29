@@ -33,11 +33,7 @@ public class ITradeService implements TradeService {
     }
 
     public Trade update(TradeDTO tradeDTO, int id){
-        //looking for the DAO id the DTO id is equal to 0 idk why
         Trade nTrade = tRepo.findById(id).orElse(null);
-        // then reassign the actual id to DAO
-        nTrade.setTradeId(id);
-        // using the DTO info for updating the DAO
         nTrade.setType(tradeDTO.getType());
         nTrade.setAccount(tradeDTO.getAccount());
         nTrade.setBuyQuantity(tradeDTO.getBuyQuantity());
