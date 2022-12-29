@@ -34,7 +34,6 @@ public class ICurvePointService implements CurvePointService {
     }
     public void update(CurvePointDTO curvePointDTO){
         CurvePoint cPoint = cPRepo.findById(curvePointDTO.getId()).orElse(null);
-        cPoint.setId(curvePointDTO.getId());
         cPoint.setValue(curvePointDTO.getValue());
         cPoint.setCurveId(curvePointDTO.getCurvePointId());
         cPoint.setTerm(curvePointDTO.getTerm());

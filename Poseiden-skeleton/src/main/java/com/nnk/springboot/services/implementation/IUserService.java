@@ -50,7 +50,6 @@ public class IUserService implements UserService {
 
     public User update(UserDTO userDTO){
         User user  = uRepo.findById(userDTO.getId()).orElse(null);
-        user.setId(userDTO.getId());
         user.setUsername(userDTO.getUsername());
         user.setPassword(userDTO.getPassword());
         uRepo.save(user);

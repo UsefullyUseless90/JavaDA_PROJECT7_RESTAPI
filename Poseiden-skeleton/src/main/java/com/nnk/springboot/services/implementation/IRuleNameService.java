@@ -34,7 +34,6 @@ public class IRuleNameService implements RuleNameService {
 
     public RuleName update(RuleNameDTO ruleNameDTO){
         RuleName rName = rnRepo.findById(ruleNameDTO.getId()).orElse(null);
-        rName.setId(ruleNameDTO.getId());
         rName.setName(ruleNameDTO.getName());
         rName.setDescription(ruleNameDTO.getDescription());
         rName.setJson(ruleNameDTO.getJson());

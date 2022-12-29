@@ -35,7 +35,6 @@ public class IBidListService implements BidListService {
 
     public BidList update(BidListDTO bidList, int id){
        BidList bList = bRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid bid with id :" + bidList.getBListId()));
-        bList.setBid(id);
         bList.setAccount(bidList.getAccount());
         bList.setType(bidList.getType());
         bList.setBidQuantity(bidList.getBidQuantity());
