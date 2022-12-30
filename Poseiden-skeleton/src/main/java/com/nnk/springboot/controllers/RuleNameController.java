@@ -3,7 +3,7 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.dao.RuleName;
 import com.nnk.springboot.domain.dto.RuleNameDTO;
 import com.nnk.springboot.repositories.RuleNameRepository;
-import com.nnk.springboot.services.implementation.IRuleNameService;
+import com.nnk.springboot.services.RuleNameService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class RuleNameController {
     @Autowired
     RuleNameRepository rnRepo;
     @Autowired
-    IRuleNameService rnService;
+    RuleNameService rnService;
 
     private static final Logger logger = LogManager.getLogger(RuleNameController.class);
 

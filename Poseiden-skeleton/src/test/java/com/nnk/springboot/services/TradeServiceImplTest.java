@@ -3,7 +3,7 @@ package com.nnk.springboot.services;
 import com.nnk.springboot.domain.dao.Trade;
 import com.nnk.springboot.domain.dto.TradeDTO;
 import com.nnk.springboot.repositories.TradeRepository;
-import com.nnk.springboot.services.implementation.ITradeService;
+import com.nnk.springboot.services.implementation.TradeServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +25,10 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class ITradeServiceTest {
+public class TradeServiceImplTest {
 
     @InjectMocks
-    private ITradeService ITradeService;
+    private TradeServiceImpl TradeServiceImpl;
 
     @Mock
     private TradeRepository tradeRepository;
@@ -56,25 +56,25 @@ public class ITradeServiceTest {
         tDTO3 = new TradeDTO(trade3);
         tListDTO = Arrays.asList(tDTO, tDTO2, tDTO3);
         // Initialising Service layer
-        ITradeService = new ITradeService(tradeRepository);
+        TradeServiceImpl = new TradeServiceImpl(tradeRepository);
     }
 
     @Test
     public void getAll() {
         Mockito.when(tradeRepository.findAll()).thenReturn(tList);
-        Assert.assertEquals(tList, ITradeService.findAll());
+        Assert.assertEquals(tList, TradeServiceImpl.findAll());
     }
 
     @Test
     public void getById() {
         Mockito.when(tradeRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(trade));
-        Assert.assertEquals(trade, ITradeService.findById(1));
+        Assert.assertEquals(trade, TradeServiceImpl.findById(1));
     }
 
     @Test
     public void save() {
         Trade tradeToSave = new Trade(1, "trade1", "Type 1", 10.0);
-        ITradeService.save(tDTO);
+        TradeServiceImpl.save(tDTO);
         verify(tradeRepository, times(1)).save(tradeToSave);
     }
 
@@ -82,7 +82,7 @@ public class ITradeServiceTest {
     public void update() {
         Mockito.when(tradeRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(trade));
         TradeDTO tradeUpdateTest = new TradeDTO(trade);
-        ITradeService.update(tradeUpdateTest, trade.getTradeId());
+        TradeServiceImpl.update(tradeUpdateTest, trade.getTradeId());
         Trade tradeUpdated = new Trade(1, "trade1", "Type 1", 10.0);
         verify(tradeRepository, times(1)).save(tradeUpdated);
     }
@@ -91,7 +91,7 @@ public class ITradeServiceTest {
     public void delete() {
         Mockito.when(tradeRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(trade2));
         TradeDTO tradeToDelete = new TradeDTO(trade2);
-        ITradeService.delete(tradeToDelete);
+        TradeServiceImpl.delete(tradeToDelete);
         verify(tradeRepository, times(1)).delete(new Trade(tradeToDelete));
     }
 }

@@ -4,7 +4,7 @@ import com.nnk.springboot.domain.dao.User;
 import com.nnk.springboot.domain.dto.UserDTO;
 import com.nnk.springboot.repositories.UserRepository;
 import com.nnk.springboot.services.implementation.CustomUserDetailsService;
-import com.nnk.springboot.services.implementation.IUserService;
+import com.nnk.springboot.services.implementation.UserServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,8 +26,8 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class IUserServiceTest {
-    private IUserService IUserService;
+public class UserServiceImplTest {
+    private UserServiceImpl UserServiceImpl;
 
     @Mock
     private UserRepository uRepo;
@@ -36,7 +36,7 @@ public class IUserServiceTest {
     private CustomUserDetailsService customUserDetailsService;
 
     @InjectMocks
-    private IUserService uService;
+    private UserServiceImpl uService;
 
     private List<User> userList;
     private User user;
@@ -61,19 +61,19 @@ public class IUserServiceTest {
         uDTO3 = new UserDTO(user3);
         uDTOList = Arrays.asList(uDTO, uDTO2, uDTO3);
         // Initialising Service layer
-        IUserService = new IUserService(uRepo, customUserDetailsService);
+        UserServiceImpl = new UserServiceImpl(uRepo, customUserDetailsService);
     }
 
     @Test
     public void getAll() {
         Mockito.when(uRepo.findAll()).thenReturn(userList);
-        Assert.assertEquals(userList, IUserService.findAll());
+        Assert.assertEquals(userList, UserServiceImpl.findAll());
     }
 
     @Test
     public void getById() {
         Mockito.when(uRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(user));
-        Assert.assertEquals(user, IUserService.findById(1));
+        Assert.assertEquals(user, UserServiceImpl.findById(1));
     }
 
     @Test
@@ -90,14 +90,14 @@ public class IUserServiceTest {
         Mockito.when(uRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(user));
         user.setFullname("James Bond");
         UserDTO userUpdateTest = new UserDTO(user);
-        IUserService.update(userUpdateTest);
+        UserServiceImpl.update(userUpdateTest);
         verify(uRepo, times(1)).save(user);
     }
 
     @Test
     public void delete() {
         Mockito.when(uRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(user));
-        IUserService.delete(new UserDTO(user));
+        UserServiceImpl.delete(new UserDTO(user));
         verify(uRepo, times(1)).delete(user);
     }
 }

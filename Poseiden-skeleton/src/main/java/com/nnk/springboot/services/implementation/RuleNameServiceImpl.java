@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @Transactional
 @AllArgsConstructor
-public class IRuleNameService implements RuleNameService {
+public class RuleNameServiceImpl implements RuleNameService {
 
     @Autowired
     RuleNameRepository rnRepo;

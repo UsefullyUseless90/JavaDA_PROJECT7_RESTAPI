@@ -2,7 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.dao.Rating;
 import com.nnk.springboot.domain.dto.RatingDTO;
-import com.nnk.springboot.services.implementation.IRatingService;
+import com.nnk.springboot.services.implementation.RatingServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ class RatingControllerTest {
 
     private MockMvc mvc;
     @MockBean
-    public IRatingService IRatingService;
+    public RatingServiceImpl RatingServiceImpl;
     @Autowired
     private WebApplicationContext context;
 
@@ -63,7 +63,7 @@ class RatingControllerTest {
 
     @Test
     void getAllRatingControllerTest() throws Exception {
-        when(IRatingService.getAll()).thenReturn(ratingList);
+        when(RatingServiceImpl.getAll()).thenReturn(ratingList);
         mvc.perform(get("/rating/list")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -85,7 +85,7 @@ class RatingControllerTest {
 
     @Test
     void validateRatingWithErrorControllerTest() throws Exception {
-        when(IRatingService.save(rating)).thenReturn(rating);
+        when(RatingServiceImpl.save(rating)).thenReturn(rating);
         mvc.perform(post("/rating/validate")
                         .sessionAttr("rating", "")
                         .param("moodysRating", "")
@@ -101,7 +101,7 @@ class RatingControllerTest {
 
     @Test
     void validateRatingControllerTest() throws Exception {
-        when(IRatingService.save(rating)).thenReturn(rating);
+        when(RatingServiceImpl.save(rating)).thenReturn(rating);
         mvc.perform(post("/rating/validate")
                         .sessionAttr("rating", rating)
                         .param("moodysRating", rating.getMoodysRating())
@@ -117,7 +117,7 @@ class RatingControllerTest {
 
     @Test
     void updateRatingControllerTest() throws Exception {
-        when(IRatingService.save(rating)).thenReturn(rating);
+        when(RatingServiceImpl.save(rating)).thenReturn(rating);
         mvc.perform(post("/rating/update/1")
                         .sessionAttr("rating", rating)
                         .param("moodysRating", rating.getMoodysRating())
@@ -133,7 +133,7 @@ class RatingControllerTest {
 
     @Test
     void updateRatingErrorControllerTest() throws Exception {
-        when(IRatingService.save(rating)).thenReturn(rating);
+        when(RatingServiceImpl.save(rating)).thenReturn(rating);
         mvc.perform(post("/rating/update/1")
                         .sessionAttr("rating", rating)
                         .param("moodysRating", "")
@@ -150,7 +150,7 @@ class RatingControllerTest {
     @Test
     void updateFormRatingControllerTest() throws Exception {
         rating.setId(01);
-        when(IRatingService.findById(rating.getId())).thenReturn(rating);
+        when(RatingServiceImpl.findById(rating.getId())).thenReturn(rating);
         mvc.perform(get("/rating/update/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
@@ -163,8 +163,8 @@ class RatingControllerTest {
     @Test
     void deleteRatingControllerTest() throws Exception {
         rating.setId(01);
-        when(IRatingService.findById(rating.getId())).thenReturn(rating);
-        when(IRatingService.delete(rating)).thenReturn(rating);
+        when(RatingServiceImpl.findById(rating.getId())).thenReturn(rating);
+        when(RatingServiceImpl.delete(rating)).thenReturn(rating);
         mvc.perform(get("/rating/delete/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))

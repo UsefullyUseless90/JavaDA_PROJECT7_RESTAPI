@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @Transactional
 @AllArgsConstructor
-public class IRatingService implements RatingService {
+public class RatingServiceImpl implements RatingService {
 
     @Autowired
     RatingRepository reRepo;

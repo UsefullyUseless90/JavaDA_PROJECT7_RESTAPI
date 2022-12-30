@@ -2,7 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.dao.BidList;
 import com.nnk.springboot.domain.dto.BidListDTO;
-import com.nnk.springboot.services.implementation.IBidListService;
+import com.nnk.springboot.services.BidListService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ import java.util.List;
 @Slf4j
 public class BidListController {
     @Autowired
-    IBidListService bService;
+    BidListService bService;
 
    // private static final Logger logger = LogManager.getLogger(BidListController.class);
 

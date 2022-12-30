@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @Transactional
 @AllArgsConstructor
-public class IBidListService implements BidListService {
+public class BidListServiceImpl implements BidListService {
 
     @Autowired
     BidListRepository bRepo;

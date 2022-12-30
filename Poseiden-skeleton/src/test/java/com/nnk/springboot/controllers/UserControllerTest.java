@@ -3,7 +3,7 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.domain.dao.User;
 import com.nnk.springboot.domain.dto.UserDTO;
 import com.nnk.springboot.repositories.UserRepository;
-import com.nnk.springboot.services.implementation.IUserService;
+import com.nnk.springboot.services.implementation.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class UserControllerTest {
 
     private MockMvc mvc;
     @MockBean
-    private IUserService uService;
+    private UserServiceImpl uService;
     @MockBean
     private UserRepository uRepo;
     @Autowired

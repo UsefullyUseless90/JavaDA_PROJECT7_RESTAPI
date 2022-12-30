@@ -3,7 +3,7 @@ package com.nnk.springboot.services;
 import com.nnk.springboot.domain.dao.RuleName;
 import com.nnk.springboot.domain.dto.RuleNameDTO;
 import com.nnk.springboot.repositories.RuleNameRepository;
-import com.nnk.springboot.services.implementation.IRuleNameService;
+import com.nnk.springboot.services.implementation.RuleNameServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +25,10 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class IRuleNameServiceTest {
+public class RuleNameServiceImplTest {
 
     @InjectMocks
-    private IRuleNameService IRuleNameService;
+    private RuleNameServiceImpl RuleNameServiceImpl;
 
     @Mock
     private RuleNameRepository ruleNameRepository;
@@ -56,25 +56,25 @@ public class IRuleNameServiceTest {
         ruleNameDTO3 = new RuleNameDTO(ruleName3);
         ruleNamesDTO = Arrays.asList(ruleNameDTO, ruleNameDTO2, ruleNameDTO3);
         // Initialising Service layer
-        IRuleNameService = new IRuleNameService(ruleNameRepository);
+        RuleNameServiceImpl = new RuleNameServiceImpl(ruleNameRepository);
     }
     @Test
     public void getAll() {
         Mockito.when(ruleNameRepository.findAll()).thenReturn(ruleNameList);
-        Assert.assertEquals(ruleNameList, IRuleNameService.findAll());
+        Assert.assertEquals(ruleNameList, RuleNameServiceImpl.findAll());
     }
 
 
     @Test
     public void getById() {
         Mockito.when(ruleNameRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(ruleName));
-        Assert.assertEquals(ruleName, IRuleNameService.findById(1));
+        Assert.assertEquals(ruleName, RuleNameServiceImpl.findById(1));
     }
 
     @Test
     public void save() {
         RuleName ruleNameToSave = new RuleName( "Name1", "Description1", "Json", "Template", "SqlStr", "SqlPart");
-        IRuleNameService.save(new RuleNameDTO(ruleNameToSave));
+        RuleNameServiceImpl.save(new RuleNameDTO(ruleNameToSave));
         verify(ruleNameRepository, times(1)).save(ruleNameToSave);
     }
 
@@ -83,7 +83,7 @@ public class IRuleNameServiceTest {
     public void update() {
         Mockito.when(ruleNameRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(ruleName));
         RuleNameDTO ruleNameUpdateTest = new RuleNameDTO(ruleName);
-        IRuleNameService.update(ruleNameUpdateTest);
+        RuleNameServiceImpl.update(ruleNameUpdateTest);
         RuleName updatedRuleName = new RuleName();
         updatedRuleName.setName(ruleNameUpdateTest.getName());
         updatedRuleName.setDescription(ruleNameUpdateTest.getDescription());
@@ -103,7 +103,7 @@ public class IRuleNameServiceTest {
     @Test
     public void delete() {
         Mockito.when(ruleNameRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(ruleName));
-        IRuleNameService.delete(new RuleNameDTO(ruleName));
+        RuleNameServiceImpl.delete(new RuleNameDTO(ruleName));
         verify(ruleNameRepository, times(1)).delete(ruleName);
     }
 

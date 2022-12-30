@@ -18,14 +18,14 @@ import java.util.Optional;
 @Service
 @Transactional
 @AllArgsConstructor
-public class IUserService implements UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository uRepo;
     @Autowired
     CustomUserDetailsService customUserDetailsService;
 
-    private static final Logger logger = LogManager.getLogger(IUserService.class);
+    private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
 
     public List<User> findAll(){
         List<User> uList = uRepo.findAll();

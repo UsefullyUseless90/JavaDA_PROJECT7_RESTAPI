@@ -14,10 +14,11 @@ import java.util.List;
 @Service
 @Transactional
 @AllArgsConstructor
-public class ICurvePointService implements CurvePointService {
+public class CurvePointServiceImpl implements CurvePointService {
 
     @Autowired
     CurvePointRepository cPRepo;
+
 
     public List<CurvePoint> getAll(){
         List<CurvePoint> curvePoints = cPRepo.findAll();

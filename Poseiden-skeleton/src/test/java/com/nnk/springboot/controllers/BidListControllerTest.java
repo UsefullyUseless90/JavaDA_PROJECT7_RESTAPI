@@ -2,7 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.dao.BidList;
 import com.nnk.springboot.domain.dto.BidListDTO;
-import com.nnk.springboot.services.implementation.IBidListService;
+import com.nnk.springboot.services.implementation.BidListServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,7 +33,7 @@ public class BidListControllerTest {
 
     private MockMvc mvc;
     @MockBean
-    private IBidListService bService;
+    private BidListServiceImpl bService;
     @Autowired
     private WebApplicationContext context;
 

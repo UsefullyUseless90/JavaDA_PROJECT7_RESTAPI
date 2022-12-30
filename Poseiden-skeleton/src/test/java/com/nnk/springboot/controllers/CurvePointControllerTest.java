@@ -2,7 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.dao.CurvePoint;
 import com.nnk.springboot.domain.dto.CurvePointDTO;
-import com.nnk.springboot.services.implementation.ICurvePointService;
+import com.nnk.springboot.services.implementation.CurvePointServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class CurvePointControllerTest {
     @Autowired
     private MockMvc mvc;
     @MockBean
-    private ICurvePointService cPService;
+    private CurvePointServiceImpl cPService;
     @Autowired
     private WebApplicationContext context;
 

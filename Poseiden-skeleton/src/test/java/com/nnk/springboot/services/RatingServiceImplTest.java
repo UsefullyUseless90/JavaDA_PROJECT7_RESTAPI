@@ -3,7 +3,7 @@ package com.nnk.springboot.services;
 import com.nnk.springboot.domain.dao.Rating;
 import com.nnk.springboot.domain.dto.RatingDTO;
 import com.nnk.springboot.repositories.RatingRepository;
-import com.nnk.springboot.services.implementation.IRatingService;
+import com.nnk.springboot.services.implementation.RatingServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +25,10 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class IRatingServiceTest {
+public class RatingServiceImplTest {
 
     @InjectMocks
-    private IRatingService rService;
+    private RatingServiceImpl rService;
 
     @Mock
     private RatingRepository rRepo;
@@ -56,7 +56,7 @@ public class IRatingServiceTest {
         rDTO3 = new RatingDTO(rating3);
         rListDTO = Arrays.asList(rDTO, rDTO2, rDTO3);
         // Initialising Service layer
-        rService = new IRatingService(rRepo);
+        rService = new RatingServiceImpl(rRepo);
     }
 
     @Test

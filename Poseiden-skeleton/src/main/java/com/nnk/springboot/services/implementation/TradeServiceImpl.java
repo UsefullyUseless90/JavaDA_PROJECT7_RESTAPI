@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @Transactional
 @AllArgsConstructor
-public class ITradeService implements TradeService {
+public class TradeServiceImpl implements TradeService {
 
     @Autowired
     TradeRepository tRepo;

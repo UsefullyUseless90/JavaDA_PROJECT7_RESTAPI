@@ -2,7 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.dao.Trade;
 import com.nnk.springboot.domain.dto.TradeDTO;
-import com.nnk.springboot.services.implementation.ITradeService;
+import com.nnk.springboot.services.TradeService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
 public class TradeController {
 
     @Autowired
-    ITradeService tService;
+    TradeService tService;
 
     private static final Logger logger = LogManager.getLogger(TradeController.class);
 

@@ -3,7 +3,7 @@ package com.nnk.springboot.controllers;
 import com.nnk.springboot.Application;
 import com.nnk.springboot.domain.dao.Trade;
 import com.nnk.springboot.domain.dto.TradeDTO;
-import com.nnk.springboot.services.implementation.ITradeService;
+import com.nnk.springboot.services.implementation.TradeServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class TradeControllerTest {
 
     private MockMvc mvc;
     @MockBean
-    private ITradeService tService;
+    private TradeServiceImpl tService;
     @Autowired
     private WebApplicationContext context;
 

@@ -3,7 +3,7 @@ package com.nnk.springboot.services;
 import com.nnk.springboot.domain.dao.BidList;
 import com.nnk.springboot.domain.dto.BidListDTO;
 import com.nnk.springboot.repositories.BidListRepository;
-import com.nnk.springboot.services.implementation.IBidListService;
+import com.nnk.springboot.services.implementation.BidListServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,10 +23,10 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class IBidListServiceTest {
+public class BidListServiceImplTest {
 
     @InjectMocks
-    public IBidListService BidListService;
+    public BidListServiceImpl BidListService;
 
     @Mock
     public BidListRepository bRepos;
@@ -55,7 +55,7 @@ public class IBidListServiceTest {
         bListDTO3 = new BidListDTO(bidList3);
         bidListDtos = Arrays.asList(bListDTO, bListDTO2, bListDTO3);
         // Initialising Service layer
-        BidListService = new IBidListService(bRepos);
+        BidListService = new BidListServiceImpl(bRepos);
     }
 
     @Test
